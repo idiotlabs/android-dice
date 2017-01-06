@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "904528590534",
+    "firebase_url": "https://android-dice.firebaseio.com",
+    "project_id": "android-dice",
+    "storage_bucket": "android-dice.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:904528590534:android:7f85e417f1a4e504",
+        "android_client_info": {
+          "package_name": "idiotlabs.dice"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "904528590534-le7pv2k6e7nog0g559c0nk3te7g9q1ep.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCCb3ybOg54FF2gFODBMIEM84ng0MQhcCY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
