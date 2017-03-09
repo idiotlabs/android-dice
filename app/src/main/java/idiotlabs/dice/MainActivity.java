@@ -41,12 +41,12 @@ public class MainActivity extends Activity {
 
         AdView mAdView = (AdView) findViewById(R.id.adView);
         // live
-//        AdRequest adRequest = new AdRequest.Builder().build();
+        AdRequest adRequest = new AdRequest.Builder().build();
         // test
-        AdRequest adRequest = new AdRequest.Builder()
-                .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
-                .addTestDevice("3EA55B11DB92B9BE")
-                .build();
+//        AdRequest adRequest = new AdRequest.Builder()
+//                .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+//                .addTestDevice("3EA55B11DB92B9BE")
+//                .build();
         mAdView.loadAd(adRequest);
     }
 
@@ -81,9 +81,11 @@ public class MainActivity extends Activity {
     }
 
     public void showDice(int rnd, int loop) {
-
         if (loop >= 19 && x > 340 && y > 340) {
             rnd = new Random().nextInt(3) + 4;
+        }
+        else if (loop >= 19 && x < 90 && y < 90) {
+            rnd = new Random().nextInt(3) + 1;
         }
 
         switch(rnd) {
