@@ -1,7 +1,13 @@
 package idiotlabs.dice;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.AudioManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -9,10 +15,12 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.crashlytics.android.Crashlytics;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
+import io.fabric.sdk.android.Fabric;
 import java.util.Random;
 
 public class MainActivity extends Activity {
@@ -31,7 +39,20 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Fabric.with(this, new Crashlytics());
         setContentView(R.layout.activity_main);
+
+        // alertdialog
+        SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
+        boolean isInitialized = sharedPref.getBoolean("INIT", false);
+
+        if (!isInitialized) {
+            this.simpleAlert();
+
+            SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putBoolean("INIT", true);
+            editor.apply();
+        }
 
         ivDice = (ImageView)findViewById(R.id.dice);
 
@@ -111,6 +132,27 @@ public class MainActivity extends Activity {
         }
     }
 
+    public void simpleAlert() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("너무 궁금해서요");
+        builder.setMessage("설문조사 하나만 해주실 수 있을까요?");
+        builder.setPositiveButton("네",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://goo.gl/forms/PRFPsNNxoGosIXhv2"));
+                        startActivity(browserIntent);
+                        dialog.dismiss();
+                    }
+                });
+        builder.setNegativeButton("아니오",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {dialog.dismiss();
+                        dialog.dismiss();
+                    }
+                });
+        builder.setCancelable(false);
+        builder.show();
+    }
     /*
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
