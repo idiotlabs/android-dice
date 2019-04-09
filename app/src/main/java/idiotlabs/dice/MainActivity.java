@@ -73,36 +73,43 @@ public class MainActivity extends Activity {
 
     public void DiceClick(View arg0) {
 
-        // get Touch Position in ImageView
-        arg0.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                x = event.getX();
-                y = event.getY();
-                return false;
-            }
-        });
+        try {
+            // get Touch Position in ImageView
+            arg0.setOnTouchListener(new View.OnTouchListener() {
+                @Override
+                public boolean onTouch(View v, MotionEvent event) {
+                    x = event.getX();
+                    y = event.getY();
+                    return false;
+                }
+            });
 
-        // Rolling...?
-        new Thread(new Runnable() {
-            public void run() {
-                for (int i = 0; i < 20; i++) {
-                    try {
-                        //handler.sendMessage(handler.obtainMessage());
-                        handler.sendEmptyMessage(i);
-                        Thread.sleep(15);
-                    } catch (Throwable t) {
+            // Rolling...?
+            new Thread(new Runnable() {
+                public void run() {
+                    for (int i = 0; i < 20; i++) {
+                        try {
+                            //handler.sendMessage(handler.obtainMessage());
+                            handler.sendEmptyMessage(i);
+                            Thread.sleep(15);
+                        } catch (Throwable t) {
+                        }
                     }
                 }
-            }
-        }).start();
+            }).start();
 
-        // Get Ring Volume
+            // Get Ring Volume
 //        float volume = am.getStreamVolume(AudioManager.STREAM_RING);
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public void showDice(int rnd, int loop) {
-        if (loop >= 19 && x > 340 && y > 340) {
+        System.out.println(x + ", " + y);
+
+        if (loop >= 19 && x > 320 && y > 320) {
             rnd = new Random().nextInt(3) + 4;
         }
         else if (loop >= 19 && x < 90 && y < 90) {
