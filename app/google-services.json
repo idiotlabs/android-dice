@@ -15,6 +15,22 @@
       },
       "oauth_client": [
         {
+          "client_id": "904528590534-fqgvj6ijbbct08klrfrfl7vc0s1qugpl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "idiotlabs.dice",
+            "certificate_hash": "080f22ae0f2bbcd1c1d76bc8409ac36dd1bee5e1"
+          }
+        },
+        {
+          "client_id": "904528590534-vfnjho72geonclbbotslhfefd37c3eut.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "idiotlabs.dice",
+            "certificate_hash": "bace7b5914961f88680d3f25e52e21dfc423d85a"
+          }
+        },
+        {
           "client_id": "904528590534-le7pv2k6e7nog0g559c0nk3te7g9q1ep.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -25,17 +41,16 @@
         }
       ],
       "services": {
-        "analytics_service": {
-          "status": 1
-        },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
-        },
-        "ads_service": {
-          "status": 2
+          "other_platform_oauth_client": [
+            {
+              "client_id": "904528590534-le7pv2k6e7nog0g559c0nk3te7g9q1ep.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
-      }
+      },
+      "admob_app_id": "ca-app-pub-8206166796422159~4404315621"
     }
   ],
   "configuration_version": "1"
